@@ -62,7 +62,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'frontend/static')  # ADDED THIS LINE
+            os.path.join(BASE_DIR, 'frontend/static'),
+            os.path.join(BASE_DIR, 'frontend/build'),  # ADDED FOR REACT BUILD
+            os.path.join(BASE_DIR, 'frontend/build/static'),  # ADDED FOR REACT BUILD
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -138,5 +140,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ADDED THIS SECTION FOR STATIC FILES
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/static')
+    os.path.join(BASE_DIR, 'frontend/static'),
+    os.path.join(BASE_DIR, 'frontend/build'),  # ADDED FOR REACT BUILD
+    os.path.join(BASE_DIR, 'frontend/build/static'),  # ADDED FOR REACT BUILD
 ]
+
+# ADDED FOR SESSION MANAGEMENT (Important for login/logout)
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Use database-backed sessions
+SESSION_COOKIE_AGE = 1209600  # 2 weeks in seconds
+SESSION_SAVE_EVERY_REQUEST = True
+
+# ADDED FOR SECURITY
+CSRF_COOKIE_SECURE = False  # Set to True in production with HTTPS
+SESSION_COOKIE_SECURE = False  # Set to True in production with HTTPS
+
+# ADDED FOR AUTHENTICATION
+LOGIN_REDIRECT_URL = '/'  # Redirect to home after login
+LOGOUT_REDIRECT_URL = '/'  # Redirect to home after logout

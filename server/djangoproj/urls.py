@@ -23,6 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('djangoapp/', include('djangoapp.urls')),
     path('', TemplateView.as_view(template_name="Home.html")),
-    path('about/', TemplateView.as_view(template_name="About.html")),  # ADDED
-    path('contact/', TemplateView.as_view(template_name="contact.html")),  # ADDED
+    path('about/', TemplateView.as_view(template_name="About.html")),
+    path('contact/', TemplateView.as_view(template_name="contact.html")),
+    path('login/', TemplateView.as_view(template_name='index.html')),  # Page de login React
+    path('register/', TemplateView.as_view(template_name='index.html')),  # AJOUTÉ - Page d'inscription React
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
