@@ -1,68 +1,165 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <!-- Link the style sheet here -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Best Cars Dealership</title>
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        .team-member {
+            margin-bottom: 30px;
+        }
+        .team-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 3px solid #007bff;
+        }
+        .why-choose-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .why-choose-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .why-choose-list li:before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+        }
+        .hero-section {
+            background: url('/static/car_dealership.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .hero-overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 10px;
+        }
+    </style>
 </head>
-<div>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
-    <div class="container-fluid">
-      <h2 style="padding-right: 5%;">Dealerships</h2>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" style="font-size: larger;" href="/about">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  
-    <div class="card" style="width: 80%;margin: auto; margin-top:5%;">
-      <div class="banner" name="about-header">
-      <!-- Insert header information here -->
-      </div>
-      <div style="display: flex;flex-direction: row; margin:auto">
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person1</p>
-          <p>Person1 Title</p>
-          <p class="card-text">Some text that explains the person1 in about 2 short sentences</p>
-          <p>person1@example.com</p>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/static/cars.jpeg" alt="Best Cars" height="30" class="d-inline-block align-text-top me-2">
+                Dealerships
+            </a>
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link active" href="/about/">About Us</a>
+                <a class="nav-link" href="/contact/">Contact Us</a>
+            </div>
         </div>
-      </div>
+    </nav>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person2</p>
-          <p>Person2 Title</p>
-          <p class="card-text">Some text that explains the person2 in about 2 short sentences</p>
-          <p>person2@example.com</p>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <div class="hero-overlay">
+                <h1>Welcome to Best Cars Dealership</h1>
+                <p class="lead">Your trusted partner for quality vehicles since 2005</p>
+            </div>
         </div>
-      </div>
+    </div>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person3</p>
-          <p>Person3 Title</p>
-          <p class="card-text">Some text that explains the person3 in about 2 short sentences</p>
-          <p>person3@example.com</p>
+    <!-- Main Content -->
+    <div class="container">
+        <div class="about-header text-center mb-5">
+            <h1>About Us</h1>
+            <p class="lead">Welcome to Best Cars dealership, home to the best cars in North America. We deal in sale of domestic and imported cars at reasonable prices.</p>
         </div>
-      </div>
-    </div>
-    </div>
-    </div>
-    
-</div>
 
+        <!-- Team Section -->
+        <div class="row text-center mb-5">
+            <div class="col-md-4 team-member">
+                <img src="/static/person.png" alt="John Smith" class="rounded-circle team-img mb-3">
+                <h3>John Smith</h3>
+                <h5 class="text-primary">Sales Manager</h5>
+                <p>With over 10 years of experience in automotive sales, John ensures you find the perfect vehicle for your needs.</p>
+            </div>
+            <div class="col-md-4 team-member">
+                <img src="/static/person.png" alt="Sarah Johnson" class="rounded-circle team-img mb-3">
+                <h3>Sarah Johnson</h3>
+                <h5 class="text-success">Service Director</h5>
+                <p>Sarah leads our service team to provide exceptional maintenance and repair services for all vehicles.</p>
+            </div>
+            <div class="col-md-4 team-member">
+                <img src="/static/person.png" alt="Mike Davis" class="rounded-circle team-img mb-3">
+                <h3>Mike Davis</h3>
+                <h5 class="text-danger">Finance Specialist</h5>
+                <p>Mike helps our customers find the best financing options and makes car ownership affordable for everyone.</p>
+            </div>
+        </div>
+
+        <!-- Our Story Section -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Our Story</h2>
+                        <p class="card-text">Founded in 2005, Best Cars Dealership has been serving the community for nearly two decades. We pride ourselves on offering quality vehicles, competitive pricing, and exceptional customer service. Our team of experienced professionals is dedicated to making your car buying experience enjoyable and stress-free.</p>
+                        <img src="/static/cars.jpeg" alt="Our Dealership" class="img-fluid rounded mt-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Choose Us Section -->
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Why Choose Us?</h2>
+                        <ul class="why-choose-list">
+                            <li>Wide selection of new and pre-owned vehicles</li>
+                            <li>Competitive pricing and financing options</li>
+                            <li>Certified technicians for all your service needs</li>
+                            <li>Customer satisfaction guarantee</li>
+                            <li>Convenient location and flexible hours</li>
+                            <li>Free vehicle history reports</li>
+                            <li>Extended warranty options</li>
+                            <li>Trade-in appraisal services</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Our Values</h2>
+                        <div class="values-list">
+                            <h5><span class="badge bg-primary me-2">Integrity</span></h5>
+                            <p>We believe in honest, transparent dealings with all our customers.</p>
+                            
+                            <h5><span class="badge bg-success me-2">Quality</span></h5>
+                            <p>Every vehicle in our inventory undergoes rigorous inspection.</p>
+                            
+                            <h5><span class="badge bg-info me-2">Service</span></h5>
+                            <p>Our commitment to customer satisfaction doesn't end at the sale.</p>
+                            
+                            <h5><span class="badge bg-warning me-2">Community</span></h5>
+                            <p>We're proud to support local initiatives and charities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <div class="container">
+            <p>&copy; 2025 Best Cars Dealership. All rights reserved.</p>
+            <p>1234 Automotive Avenue, Detroit, MI 48201 | (555) 123-4567</p>
+        </div>
+    </footer>
+</body>
 </html>
