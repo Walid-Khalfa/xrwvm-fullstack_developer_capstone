@@ -13,6 +13,8 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 # from .populate import initiate
 
+# Import the functions from restapis.py
+from .restapis import get_request, analyze_review_sentiments, post_review
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -80,25 +82,49 @@ def registration(request):
 
 # Update the `get_dealerships` view to render the index page with
 # a list of dealerships
-def get_dealerships(request):
-    context = {}
-    if request.method == "GET":
-        return render(request, 'djangoapp/index.html', context)
-
-# Create a `get_dealer_reviews` view to render the reviews of a dealer
-def get_dealer_reviews(request, dealer_id):
-    context = {}
-    if request.method == "GET":
-        return render(request, 'djangoapp/index.html', context)
+def get_dealerships(request, state="All"):
+    if state == "All":
+        endpoint = "/fetchDealers"
+    else:
+        endpoint = f"/fetchDealers/{state}"
+    
+    dealerships = get_request(endpoint)
+    return JsonResponse({"status": 200, "dealers": dealerships})
 
 # Create a `get_dealer_details` view to render the dealer details
 def get_dealer_details(request, dealer_id):
-    context = {}
-    if request.method == "GET":
-        return render(request, 'djangoapp/index.html', context)
+    endpoint = f"/fetchDealer/{dealer_id}"
+    dealer = get_request(endpoint)
+    return JsonResponse({"status": 200, "dealer": dealer})
+
+# Create a `get_dealer_reviews` view to render the reviews of a dealer
+def get_dealer_reviews(request, dealer_id):
+    endpoint = f"/fetchReviews/dealer/{dealer_id}"
+    reviews = get_request(endpoint)
+    
+    # Analyze sentiment for each review
+    if reviews:
+        for review in reviews:
+            sentiment_result = analyze_review_sentiments(review['review'])
+            review['sentiment'] = sentiment_result.get('sentiment', 'neutral')
+    
+    return JsonResponse({"status": 200, "reviews": reviews})
 
 # Create a `add_review` view to submit a review
+@csrf_exempt
 def add_review(request):
-    context = {}
-    if request.method == "GET":
-        return render(request, 'djangoapp/index.html', context)
+    if request.user.is_anonymous:
+        return JsonResponse({"status": 403, "message": "Unauthorized"})
+    
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            response = post_review(data)
+            if response:
+                return JsonResponse({"status": 200})
+            else:
+                return JsonResponse({"status": 401, "message": "Error in posting review"})
+        except Exception as e:
+            return JsonResponse({"status": 401, "message": f"Error in posting review: {str(e)}"})
+    
+    return JsonResponse({"status": 400, "message": "Invalid request method"})
